@@ -33,30 +33,23 @@ function AddNewInterview() {
     setLoading(true);
     e.preventDefault();
 
-    const inputPrompt = "Job position: "+jobPosition+", Job Description: "+jobDescription+", Years of experience: "+jobExperience+", Depends on this information please give me"+process.env.NEXT_PUBLIC_INTERVIEW_QUESTION_COUNT+"interview question with answered in json formate, give question and answred as filed in json.";
+    const inputPrompt = "Job position: "+jobPosition+", Job Description: "+jobDescription+", Years of experience: "+jobExperience+", Depends on this information please give me"+process.env.NEXT_PUBLIC_INTERVIEW_QUESTION_COUNT+"interview question with answered in json formate, give question and answred as filed in json.and note gemini: ignore case sensitivity and if you find any error in entering details correct your self and genereate interview as i said";
 
     
       const result = await chatSession.sendMessage(inputPrompt);
-      console.log(result.response.text());
+      //console.log(result.response.text());
       const responseText = (result.response.text()).replace('```json','').replace('```','');
-      console.log(result.response.text());
+      //console.log(result.response.text());
       console.log(JSON.parse(responseText));
-      // console.log("🚀 ~ file: AddNewInterview.jsx:41 ~ onSubmit ~ responseText:", responseText)
-      // const jsonMatch = responseText.match(/\[.*?\]/s);
-      // if (!jsonMatch) {
-      //   throw new Error("No valid JSON array found in the response");
-      // }
+      const jsonMatch = responseText.match(/\[.*?\]/s);
+      if (!jsonMatch) {
+      throw new Error("No valid JSON array found in the response");
+      }
       setJsonResponse(responseText);
   
-      // const jsonResponsePart = jsonMatch[0];
-      // console.log("🚀 ~ file: AddNewInterview.jsx:43 ~ onSubmit ~ jsonResponsePart:", jsonResponsePart);
   
       if (responseText) {
 
-        // const mockResponse = JSON.parse(jsonResponsePart.trim());
-        // console.log("🚀 ~ file: AddNewInterview.jsx:45 ~ onSubmit ~ mockResponse:", mockResponse)
-        // setJsonResponse(mockResponse);
-        // const jsonString = JSON.stringify(mockResponse);
         const res = await db.insert(MockInterview)
           .values({
             mockId: uuidv4(),
@@ -74,17 +67,13 @@ function AddNewInterview() {
               setOpenDialog(false);
               router.push('/dashboard/interview/'+res[0]?.mockId)
             }
-          // setLoading(false);
-          // router.push(`dashboard/interview/${res[0]?.mockId}`);
+          
       }
        else {
         console.error("Error: Unable to extract JSON response");
       }
      
-      console.error("Error fetching interview questions:", error);
-    //  finally {
-    //   setLoading(false);
-    // }
+
       setLoading(false);
   };
 
@@ -113,7 +102,7 @@ function AddNewInterview() {
                 <div className="mt-7 my-3">
                   <label>Job Role/Job Position</label>
                   <Input
-                    placeholder="Ex. Full Stack Developer"
+                    placeholder="Ex. Full Stack Developer - In Small Letter"
                     required
                     onChange={(e) => setJobPosition(e.target.value)}
                   />
@@ -131,7 +120,7 @@ function AddNewInterview() {
                   <Input
                     placeholder="Ex. 5"
                     type="number"
-                    min="1"
+                    min="0"
                     max="70"
                     required
                     onChange={(e) => setJobExperience(e.target.value)}

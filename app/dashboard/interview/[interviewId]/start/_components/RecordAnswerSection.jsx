@@ -65,28 +65,11 @@ const RecordAnswerSection = ({
       "Question:"+mockInterviewQuestion[activeQuestionIndex]?.question+", User Answer:"+
             userAnswer+",Depends on question and user answer for given interview question "+"please give us ratingnfor answer and feedback as area of improvement if any "+
             "in just 3 to 5 lines to improve it in JSON formate with rating field and feedback field";
-    // console.log(
-    //   "🚀 ~ file: RecordAnswerSection.jsx:38 ~ SaveUserAnswer ~ feedbackPrompt:",
-    //   feedbackPrompt
-    // );
+    
     const result = await chatSession.sendMessage(feedbackPrompt);
     
     const mockJsonResp=(result.response.text()).replace('```json','').replace('```','')
     console.log(mockJsonResp);
-
-    // console.log(
-    //   "🚀 ~ file: RecordAnswerSection.jsx:46 ~ SaveUserAnswer ~ result:",
-    //   result
-    // );
-    // const mockJsonResp = result.response
-    //   .text()
-    //   .replace("```json", "")
-    //   .replace("```", "");
-
-    // console.log(
-    //   "🚀 ~ file: RecordAnswerSection.jsx:47 ~ SaveUserAnswer ~ mockJsonResp:",
-    //   mockJsonResp
-    // );
 
     const JsonfeedbackResp = JSON.parse(mockJsonResp);
 
@@ -116,17 +99,14 @@ const RecordAnswerSection = ({
     <div className="flex justify-cente items-center flex-col">
       <div className="flex flex-col my-20 justify-center items-center bg-black rounded-lg p-5">
         <Image
-          src={"/webcam.png"}
+          src={"/webcam2.png"}
           width={200}
           height={200}
           className="absolute"
           alt="webcam"
           priority
         />
-        {/* <Webcam
-          style={{ height: 300, width: "100%", zIndex: 10 }}
-          mirrored={true}
-        /> */}
+      
         <Webcam
             mirrored={true} 
             style={{

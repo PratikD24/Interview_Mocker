@@ -28,12 +28,11 @@ export default function Page() {
             </a>
 
             <h2 className="mt-6 text-2xl font-bold text-white sm:text-3xl md:text-4xl">
-              Welcome to Squid 🦑
+            Welcome to Mock Interview 🦑
             </h2>
 
             <p className="mt-4 leading-relaxed text-white/90">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi
-              nam dolorum aliquam, quibusdam aperiam voluptatum.
+            AI Mock Interview App is a cutting-edge application built with Next.js designed to help users practice and prepare for technical interviews.
             </p>
           </div>
         </section>
@@ -60,12 +59,12 @@ export default function Page() {
               </a>
 
               <h1 className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
-                Welcome to AI Interview Moker 🦑
+                Welcome to Mock Interview 🦑
               </h1>
 
               <p className="mt-4 leading-relaxed text-gray-500">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Eligendi nam dolorum aliquam, quibusdam aperiam voluptatum.
+              AI Mock Interview App is a cutting-edge application built with Next.js designed to help users practice and prepare for technical interviews.
+
               </p>
             </div>
             <SignIn />
