@@ -94,7 +94,7 @@ const RecordAnswerSection = ({
     setLoading(false);
   };
 
-  if (error) return <p>Web Speech API is not available in this browser 🤷‍</p>;
+  if (error) return <p>Web Speech API is not available in this browser 🤷‍ Please Try on Chrome</p>;
   return (
     <div className="flex justify-cente items-center flex-col">
       <div className="flex flex-col my-20 justify-center items-center bg-black rounded-lg p-5">
