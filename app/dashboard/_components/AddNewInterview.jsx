@@ -102,7 +102,7 @@ function AddNewInterview() {
                 <div className="mt-7 my-3">
                   <label>Job Role/Job Position</label>
                   <Input
-                    placeholder="Ex. Full Stack Developer - In Small Letter"
+                    placeholder="Ex. Full Stack Developer "
                     required
                     onChange={(e) => setJobPosition(e.target.value)}
                   />
