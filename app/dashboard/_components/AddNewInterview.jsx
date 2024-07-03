@@ -110,7 +110,7 @@ function AddNewInterview() {
                 <div className="my-3">
                   <label>Job Description/Tech Stack (In short)</label>
                   <Textarea
-                    placeholder="Ex. React, Angular, NodeJs, MySql etc"
+                    placeholder="Ex. React, Angular, NodeJs, MySql etc."
                     required
                     onChange={(e) => setJobDescription(e.target.value)}
                   />
